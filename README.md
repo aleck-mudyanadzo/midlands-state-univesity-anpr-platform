@@ -107,7 +107,7 @@ pip install -r requirements.txt
 
 \# Create backend/.env with:
 
-\#   DATABASE\_URL=postgresql://postgres:<password>@localhost:5432/anpr\_dev
+\#   DATABASE\_URL=postgresql+psycopg://postgres:<password>@localhost:5432/anpr\_dev
 
 \#   JWT\_SECRET=<a long random string>
 
@@ -182,4 +182,3 @@ plan, and information MSU must supply before go-live.
 
 
 To be determined by MSU.
-
