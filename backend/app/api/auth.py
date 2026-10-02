@@ -1,3 +1,4 @@
+from app.core.permissions import require_permission
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.core.database import get_db
@@ -34,3 +35,6 @@ def read_current_user(current_user: User = Depends(get_current_user)):
         "status": current_user.status,
         "mfa_enabled": current_user.mfa_enabled,
     }
+@router.get("/test-permission")
+def test_permission_check(current_user: User = Depends(require_permission("vehicle.read"))):
+    return {"message": f"Access granted. {current_user.username} has vehicle.read permission."}
