@@ -2,8 +2,11 @@ from fastapi import FastAPI, Depends
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from app.core.database import get_db
+from app.api.auth import router as auth_router
 
 app = FastAPI(title="MSU ANPR Platform API")
+
+app.include_router(auth_router)
 
 @app.get("/")
 def root():
